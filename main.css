@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Coda+Caption&family=Share+Tech+Mono&display=swap');
+
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 36px;
+    background: linear-gradient(45deg, rgb(143, 125, 122), rgb(169, 187, 187));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    max-height:640px;
+}
+
+.package {
+    padding: 16px;
+    background-color: #222;
+    border-radius: 12px;
+    box-shadow: 0px 0px 24px hsl(196, 14%, 47%);
+}
+
+header {
+    margin-left: 16px;
+    display: flex;
+    font-family: 'Coda Caption', sans-serif;
+    font-weight: 800;
+    color:rgb(143, 125, 122);
+}
+
+.logo {
+    font-size: 20px;
+}
+
+.title {
+    margin-left: auto;
+    padding-right: 20px;
+    font-size: 18px;
+}
+
+.display {
+    margin: 12px auto 24px;
+    padding: 12px;
+    max-width: 95%;
+    border: 1px solid black;
+    font-size: 48px;
+    background-color: #CCC;
+    color:rgb(104, 94, 92);
+    text-align: right;
+    box-shadow: inset 0px 0px 24px hsl(196, 14%, 47%);
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 24px 12px;
+}
+
+.buttons .numeral,
+.buttons .function {
+    width: 96px;
+    height: 96px;
+    color: #ddd;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.number-keys {
+    padding-right: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    gap: 8px;
+    max-width: 60%;
+}
+
+.function-keys {
+    display: flex;
+    flex-flow: column-reverse wrap;
+    justify-content: flex-start;
+    gap: 8px;
+    max-height: 408px;
+}
+
+.numeral,
+.function {
+    transition: all 0.2s ease-in;
+}
+
+.numeral {
+    background-color: rgb(59, 60, 66);
+}
+
+.function {
+    background-color: rgb(55, 60, 90);
+}
+
+.backspace {
+    background-color: rgb(56, 90, 130);
+}
+
+.multiply {
+    order: 0;
+}
+
+.equals {
+    flex: 2 2 200px;
+}
+
+.numeral:hover,
+.function:hover {
+    background-color:rgb(120, 167, 219);
+    box-shadow: inset 0 0 12px rgb(34, 93, 193);
+}
