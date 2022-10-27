@@ -13,11 +13,24 @@ html {
 body {
     font-family: 'Share Tech Mono', monospace;
     font-size: 36px;
-    background: linear-gradient(45deg, rgb(143, 125, 122), rgb(169, 187, 187));
+    background: linear-gradient(40deg, rgb(143, 125, 122), rgb(169, 187, 187));
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color:rgb(143, 125, 122);
+}
+
+a:hover {
+    color:rgb(143, 125, 122);
+}
+
+a:visited {
+    color:rgb(143, 125, 122);
 }
 
 .container {
