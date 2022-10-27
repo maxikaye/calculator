@@ -4,6 +4,7 @@ const display = document.querySelector('.display');
 const numeralButtons = document.querySelectorAll('.numeral');
 const operatorButtons = document.querySelectorAll('.operator');
 let currentValue = 0;
+let previousValue = 0;
 let currentOperator = null;
 
 function add (a, b) {
@@ -46,20 +47,29 @@ function operate(operator, a, b) {
     }
 }
 
-function getOperation(buttonPressed) {
-    
+function getOperator(buttonPressed) {
+    // if (buttonPressed === 'equals') displayValue(operate( , , ))
+    // convert storage to obj? array? order of operations?
+    previousValue = currentValue;
+    currentValue = null;
+    currentOperator = buttonPressed;
+    displayValues(currentOperator);
 }
 
-function displayNumerals(key) {
-    if (currentValue === 0) currentValue = key.innerHTML;
-    else currentValue += key.innerHTML;
-    display.textContent = currentValue;
+function getNumber(n) {
+    if (currentValue === 0 || currentValue === null) currentValue = n;
+    else currentValue += n;
+    displayValues(currentValue);
+}
+
+function displayValues(value) {
+    display.innerHTML = value;
 }
 
 numeralButtons.forEach( number => {
-    number.addEventListener('click', () => displayNumerals(number))
+    number.addEventListener('click', () => getNumber(number.innerHTML));
 });
 
 operatorButtons.forEach( op => {
-    op.addEventListener('click', () => )
+    op.addEventListener('click', () => getOperator(op.innerHTML));
 })
