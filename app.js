@@ -1,11 +1,15 @@
 // Calculator by github.com/maxikaye
 // 2022 OCT
+
+// DOM
 const display = document.querySelector('.display');
 const numeralButtons = document.querySelectorAll('.numeral');
 const operatorButtons = document.querySelectorAll('.operator');
+// GLOBALS
 let currentValue = 0;
-let previousValue = 0;
-let currentOperator = null;
+let lastValue = 0;
+let total = 0;
+let currentOp = null;
 
 function add (a, b) {
     return a + b;
@@ -24,6 +28,7 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
+    // if not first input display current total, total is current value
     switch (operator) {
         case 'add':
         case '+':
@@ -48,27 +53,30 @@ function operate(operator, a, b) {
     }
 }
 
-function getOperator(buttonPressed) {
-    // if (buttonPressed === 'equals') displayValue(operate( , , ))
-    currentOperator = buttonPressed;
-    console.log(buttonPressed)
-    switch (currentOperator) {
+function getOperator(op) {
+    currentOp = op;
+    switch (currentOp) {
         case '=':
             console.log('equals')
+            //operate and display current total
             break;
         case '«':
-            console.log('backspace')
+            currentValue = Math.floor(currentValue * 0.1);
             break;
         case 'AC':
             console.log('clear')
+            // clear memory and current display to 0
             break;
         case '±':
             console.log('plus minus')
+            // multiply current input by -1 and toggle - ::before prefix
             break;
+        case '=':
         default:
-            displayValues(operate(currentOperator, previousValue, currentValue));
+            console.log('equals')
+            //total = (op, lastValue, currentValue));
     }
-    
+    displayValues(currentValue);
 }
 
 function getNumber(n) {
