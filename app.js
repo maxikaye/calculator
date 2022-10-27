@@ -56,10 +56,6 @@ function operate(operator, a, b) {
 function getOperator(op) {
     currentOp = op;
     switch (currentOp) {
-        case '=':
-            console.log('equals')
-            //operate and display current total
-            break;
         case '«':
             currentValue = Math.floor(currentValue * 0.1);
             break;
@@ -68,8 +64,7 @@ function getOperator(op) {
             // clear memory and current display to 0
             break;
         case '±':
-            console.log('plus minus')
-            // multiply current input by -1 and toggle - ::before prefix
+            currentValue *= -1;
             break;
         case '=':
         default:
