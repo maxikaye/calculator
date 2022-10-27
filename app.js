@@ -40,6 +40,7 @@ function operate(operator, a, b) {
             break;
         case 'divide':
         case '/':
+        case '÷':
             return divide(a, b);
             break;
         default:
@@ -49,11 +50,25 @@ function operate(operator, a, b) {
 
 function getOperator(buttonPressed) {
     // if (buttonPressed === 'equals') displayValue(operate( , , ))
-    // convert storage to obj? array? order of operations?
-    previousValue = currentValue;
-    currentValue = null;
     currentOperator = buttonPressed;
-    displayValues(currentOperator);
+    console.log(buttonPressed)
+    switch (currentOperator) {
+        case '=':
+            console.log('equals')
+            break;
+        case '«':
+            console.log('backspace')
+            break;
+        case 'AC':
+            console.log('clear')
+            break;
+        case '±':
+            console.log('plus minus')
+            break;
+        default:
+            displayValues(operate(currentOperator, previousValue, currentValue));
+    }
+    
 }
 
 function getNumber(n) {
