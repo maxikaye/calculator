@@ -83,7 +83,7 @@ header {
 }
 
 .buttons .numeral,
-.buttons .function {
+.buttons .operator {
     width: 96px;
     height: 96px;
     color: #ddd;
@@ -102,7 +102,7 @@ header {
     max-width: 60%;
 }
 
-.function-keys {
+.operator-keys {
     display: flex;
     flex-flow: column-reverse wrap;
     justify-content: flex-start;
@@ -111,7 +111,7 @@ header {
 }
 
 .numeral,
-.function {
+.operator {
     transition: all 0.2s ease-in;
 }
 
@@ -119,7 +119,7 @@ header {
     background-color: rgb(59, 60, 66);
 }
 
-.function {
+.operator {
     background-color: rgb(55, 60, 90);
 }
 
@@ -136,7 +136,7 @@ header {
 }
 
 .numeral:hover,
-.function:hover {
+.operator:hover {
     background-color:rgb(120, 167, 219);
     box-shadow: inset 0 0 12px rgb(34, 93, 193);
 }

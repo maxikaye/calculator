@@ -2,7 +2,9 @@
 // 2022 OCT
 const display = document.querySelector('.display');
 const numeralButtons = document.querySelectorAll('.numeral');
-let displayValue = 0;
+const operatorButtons = document.querySelectorAll('.operator');
+let currentValue = 0;
+let currentOperator = null;
 
 function add (a, b) {
     return a + b;
@@ -44,14 +46,20 @@ function operate(operator, a, b) {
     }
 }
 
-function displayNumerals(key) {
-    console.log(key.innerHTML)
-    displayValue = key.innerHTML;
-    display.textContent = displayValue;
+function getOperation(buttonPressed) {
+    
 }
 
-// numeral buttons event listeners
+function displayNumerals(key) {
+    if (currentValue === 0) currentValue = key.innerHTML;
+    else currentValue += key.innerHTML;
+    display.textContent = currentValue;
+}
+
 numeralButtons.forEach( number => {
     number.addEventListener('click', () => displayNumerals(number))
 });
-// function button event listeners
+
+operatorButtons.forEach( op => {
+    op.addEventListener('click', () => )
+})
