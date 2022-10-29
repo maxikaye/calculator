@@ -1,15 +1,13 @@
-// Calculator by github.com/maxikaye
-// 2022 OCT
+// Calculator by github.com/maxikaye | 2022 OCTOBER
 
-// DOM
 const display = document.querySelector('.display');
 const numeralButtons = document.querySelectorAll('.numeral');
 const operatorButtons = document.querySelectorAll('.operator');
-// GLOBALS
+
 let currentValue = 0;
 let lastValue = 0;
-let total = 0;
 let currentOp = null;
+let operated = false;
 
 function add (a, b) {
     return a + b;
@@ -28,7 +26,6 @@ function divide(a, b) {
 }
 
 function operate(operator, a, b) {
-    // if not first input display current total, total is current value
     switch (operator) {
         case 'add':
         case '+':
@@ -49,45 +46,61 @@ function operate(operator, a, b) {
             return divide(a, b);
             break;
         default:
-            return "Operator not recognized";
+            return currentValue;
     }
-}
-
-function getOperator(op) {
-    currentOp = op;
-    switch (currentOp) {
-        case '«':
-            currentValue = Math.floor(currentValue * 0.1);
-            break;
-        case 'AC':
-            console.log('clear')
-            // clear memory and current display to 0
-            break;
-        case '±':
-            currentValue *= -1;
-            break;
-        case '=':
-        default:
-            console.log('equals')
-            //total = (op, lastValue, currentValue));
-    }
-    displayValues(currentValue);
-}
-
-function getNumber(n) {
-    if (currentValue === 0 || currentValue === null) currentValue = n;
-    else currentValue += n;
-    displayValues(currentValue);
 }
 
 function displayValues(value) {
     display.innerHTML = value;
 }
 
+function reset() {
+    currentOp = null;
+    currentValue = 0;
+    lastValue = 0;
+    operated = false;
+    displayValues(currentValue);
+}
+
+function getOperator(op) {
+    switch (op) {
+        case '«':
+            currentValue = Math.floor(currentValue * 0.1);
+            break;
+        case 'AC':
+            reset();
+            break;
+        case '±':
+            currentValue *= -1;
+            break;
+        case '=':
+        default:
+            operated = true;
+            if (currentOp === null) {
+                lastValue = currentValue;
+                currentValue = 0;
+                currentOp = op;
+                break;
+            } else {
+                currentValue = operate(currentOp, lastValue, currentValue);
+                currentOp = op;
+                operated = true;
+                displayValues(currentValue);
+                lastValue = currentValue;
+            }
+    }
+    console.log(lastValue, currentValue, currentOp)
+}
+
+function getNumber(n) {
+    if (currentOp === null || operated) currentValue = n;
+    else currentValue += n;
+    displayValues(currentValue);
+}
+
 numeralButtons.forEach( number => {
     number.addEventListener('click', () => getNumber(number.innerHTML));
 });
-
 operatorButtons.forEach( op => {
     op.addEventListener('click', () => getOperator(op.innerHTML));
 })
