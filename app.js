@@ -66,7 +66,8 @@ function reset() {
 function getOperator(op) {
     switch (op) {
         case '«':
-            currentValue = Math.floor(currentValue * 0.1);
+            if (currentValue.length > 1) currentValue = currentValue.slice(0, -1);
+            else currentValue = 0;
             displayValues(currentValue);
             break;
         case 'AC':
@@ -102,8 +103,6 @@ function getNumber(n) {
     if (currentValue === 0 && n !== '.') currentValue = n;
     else currentValue += n;
     displayValues(currentValue);
-
-    // note: Number.toPrecision(2) for floats
 }
 
 numeralButtons.forEach( number => {
