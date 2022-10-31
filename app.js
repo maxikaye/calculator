@@ -78,7 +78,7 @@ function getOperator(op) {
             displayValues(currentValue);
             break;
         case '=':
-            currentValue = operate(currentOp, lastValue, +currentValue);
+            currentValue = Math.round(operate(currentOp, lastValue, +currentValue) * 100000) / 100000;
             currentOp = op;
             displayValues(currentValue);
             lastValue = currentValue;
@@ -90,7 +90,7 @@ function getOperator(op) {
                 currentValue = 0;
                 break;
             } else {
-                currentValue = operate(currentOp, lastValue, +currentValue);
+                currentValue = Math.round(operate(currentOp, lastValue, +currentValue) * 100000) / 100000;
                 currentOp = op;
                 displayValues(currentValue);
                 lastValue = currentValue;
