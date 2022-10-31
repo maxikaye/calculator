@@ -109,5 +109,9 @@ numeralButtons.forEach( number => {
     number.addEventListener('click', () => getNumber(number.innerHTML));
 });
 operatorButtons.forEach( op => {
-    op.addEventListener('click', () => getOperator(op.innerHTML));
-})
+    op.addEventListener('click', () => {
+        if (currentOp) operatorButtons.forEach(div => div.classList.remove('focused'));
+        getOperator(op.innerHTML);
+        op.classList.toggle('focused');
+    });
+});
