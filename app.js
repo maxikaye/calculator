@@ -42,7 +42,10 @@ function operate(operator, a, b) {
         case 'divide':
         case '/':
         case '÷':
-            return divide(a, b);
+            if (b === 0) {
+                alert("C'mon man, you can't divide by zero!")
+                return 0;
+            } else return divide(a, b);
             break;
         default:
             return currentValue;
