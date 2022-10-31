@@ -101,7 +101,9 @@ function getOperator(op) {
 
 function getNumber(n) {
     if (currentValue === 0 && n !== '.') currentValue = n;
-    else currentValue += n;
+    else if (currentValue.includes('.')) {
+        if (!(currentValue.length > currentValue.indexOf('.') + 2)) currentValue += n;
+    } else currentValue += n;
     displayValues(currentValue);
 }
 
