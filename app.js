@@ -7,7 +7,6 @@ const operatorButtons = document.querySelectorAll('.operator');
 let currentValue = 0;
 let lastValue = 0;
 let currentOp = null;
-let operated = false;
 
 function add (a, b) {
     return a + b;
@@ -58,7 +57,6 @@ function reset() {
     currentOp = null;
     currentValue = 0;
     lastValue = 0;
-    operated = false;
     displayValues(currentValue);
 }
 
@@ -74,28 +72,34 @@ function getOperator(op) {
             currentValue *= -1;
             break;
         case '=':
+            debugger;
+            currentValue = operate(currentOp, lastValue, +currentValue);
+            currentOp = op;
+            displayValues(currentValue);
+            lastValue = currentValue;
+            break;
         default:
-            operated = true;
             if (currentOp === null) {
-                lastValue = currentValue;
-                currentValue = 0;
+                lastValue = +currentValue;
                 currentOp = op;
+                currentValue = 0;
                 break;
             } else {
-                currentValue = operate(currentOp, lastValue, currentValue);
+                currentValue = operate(currentOp, lastValue, +currentValue);
                 currentOp = op;
-                operated = true;
                 displayValues(currentValue);
                 lastValue = currentValue;
-            }
+                currentValue = 0;
+            }  
     }
-    console.log(lastValue, currentValue, currentOp)
 }
 
 function getNumber(n) {
-    if (currentOp === null || operated) currentValue = n;
+    if (currentValue === 0 && n !== '.') currentValue = n;
     else currentValue += n;
     displayValues(currentValue);
+
+    // note: Number.toPrecision(2) for floats
 }
 
 numeralButtons.forEach( number => {
