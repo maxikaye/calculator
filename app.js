@@ -67,15 +67,16 @@ function getOperator(op) {
     switch (op) {
         case '«':
             currentValue = Math.floor(currentValue * 0.1);
+            displayValues(currentValue);
             break;
         case 'AC':
             reset();
             break;
         case '±':
             currentValue *= -1;
+            displayValues(currentValue);
             break;
         case '=':
-            debugger;
             currentValue = operate(currentOp, lastValue, +currentValue);
             currentOp = op;
             displayValues(currentValue);
